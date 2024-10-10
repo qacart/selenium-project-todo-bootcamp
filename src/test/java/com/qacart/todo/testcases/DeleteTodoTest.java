@@ -1,30 +1,20 @@
 package com.qacart.todo.testcases;
 
+import com.qacart.todo.base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
-public class DeleteTodoTest {
+public class DeleteTodoTest extends BaseTest {
 
-    WebDriver driver;
+
 
     @BeforeMethod
     void register_and_add_todo() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://todo.qacart.com/signup");
 
         // Fill the first name
@@ -75,8 +65,6 @@ public class DeleteTodoTest {
         deleteIcon.click();
         WebElement noTodosMessage = driver.findElement(By.cssSelector("[data-testid=no-todos]"));
         Assert.assertTrue(noTodosMessage.isDisplayed());
-
-        driver.quit();
 
     }
 }

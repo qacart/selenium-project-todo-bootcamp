@@ -1,26 +1,17 @@
 package com.qacart.todo.testcases;
 
+import com.qacart.todo.base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
 
     @Test
     void should_be_able_to_login() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://todo.qacart.com/login");
 
         // Fill the email
@@ -40,6 +31,5 @@ public class LoginTest {
         WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=welcome]"));
         Assert.assertTrue(welcomeMessage.isDisplayed());
 
-        driver.quit();
     }
 }
