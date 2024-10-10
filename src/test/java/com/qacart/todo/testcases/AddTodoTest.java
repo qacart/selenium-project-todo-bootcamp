@@ -1,6 +1,7 @@
 package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
+import com.qacart.todo.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -13,21 +14,9 @@ public class AddTodoTest extends BaseTest {
 
     @BeforeMethod
     void login() {
-
         driver.get("https://todo.qacart.com/login");
-
-        // Fill the email
-        String email = "automation@example.com";
-        WebElement emailInput = driver.findElement(By.cssSelector("[data-testid=email]"));
-        emailInput.sendKeys(email);
-
-        // Fill the password
-        WebElement passwordInput = driver.findElement(By.cssSelector("[data-testid=password]"));
-        passwordInput.sendKeys("Test1234");
-
-        // Click on the signup button
-        WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
-        submitButton.click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login();
     }
 
     @Test
