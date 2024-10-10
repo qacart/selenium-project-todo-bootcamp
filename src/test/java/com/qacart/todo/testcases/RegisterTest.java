@@ -1,26 +1,16 @@
 package com.qacart.todo.testcases;
 
+import com.qacart.todo.base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.time.Instant;
 
-public class RegisterTest {
+public class RegisterTest extends BaseTest {
 
     @Test
     void should_be_able_to_register() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://todo.qacart.com/signup");
 
         // Fill the first name
@@ -52,8 +42,6 @@ public class RegisterTest {
         // Assert the welcome message is displayed
         WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=welcome]"));
         Assert.assertTrue(welcomeMessage.isDisplayed());
-
-        driver.quit();
 
 
     }
