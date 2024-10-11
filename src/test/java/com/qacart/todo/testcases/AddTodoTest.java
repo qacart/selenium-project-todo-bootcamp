@@ -20,7 +20,9 @@ public class AddTodoTest extends BaseTest {
         driver.get("https://todo.qacart.com/login");
         String email = "automation@example.com";
         String password = "Test1234";
-        User user = new User(email, password);
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, user);
     }
@@ -32,7 +34,8 @@ public class AddTodoTest extends BaseTest {
         todoPage.clickOnPlusIcon(driver);
 
         String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
-        Todo todo = new Todo(taskName);
+        Todo todo = new Todo();
+        todo.setName(taskName);
         NewTodoPage newTodoPage = new NewTodoPage();
         newTodoPage.createNewTodo(driver , todo);
 

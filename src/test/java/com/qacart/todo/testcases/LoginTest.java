@@ -20,7 +20,9 @@ public class LoginTest extends BaseTest {
         String email = "automation@example.com";
         String password = "Test1234";
 
-        User user = new User(email, password);
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
 
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, user);

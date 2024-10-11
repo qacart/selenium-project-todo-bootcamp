@@ -27,7 +27,12 @@ public class DeleteTodoTest extends BaseTest {
         String password = "Test1234";
         String confirmPassword = "Test1234";
 
-        User user = new User(firstName, lastName, email, password, confirmPassword);
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setConfirmPassword(confirmPassword);
 
         RegisterPage registerPage = new RegisterPage();
         registerPage.register(driver, user);
@@ -38,7 +43,8 @@ public class DeleteTodoTest extends BaseTest {
         String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
 
         NewTodoPage newTodoPage = new NewTodoPage();
-        Todo todo = new Todo(taskName);
+        Todo todo = new Todo();
+        todo.setName(taskName);
         newTodoPage.createNewTodo(driver, todo);
     }
 

@@ -23,7 +23,12 @@ public class RegisterTest extends BaseTest {
         String password = "Test1234";
         String confirmPassword = "Test1234";
 
-        User user = new User(firstName, lastName, email, password, confirmPassword);
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setConfirmPassword(confirmPassword);
 
         RegisterPage registerPage = new RegisterPage();
         registerPage.register(driver, user);
