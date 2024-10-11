@@ -1,5 +1,6 @@
 package com.qacart.todo.pages;
 
+import com.qacart.todo.utils.ConfigUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ public class TodoPage {
     private final By NO_TODOS_MESSAGE_LOCATOR = By.cssSelector("[data-testid=no-todos]");
 
     public void load(WebDriver driver) {
-        driver.get("https://todo.qacart.com/todo");
+        driver.get(ConfigUtil.getInstance().getBaseUrl() + "/todo");
     }
 
     public WebElement getWelcomeMessage(WebDriver driver) {

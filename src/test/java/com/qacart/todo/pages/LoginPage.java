@@ -1,6 +1,7 @@
 package com.qacart.todo.pages;
 
 import com.qacart.todo.models.User;
+import com.qacart.todo.utils.ConfigUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +13,7 @@ public class LoginPage {
 
 
     public void load(WebDriver driver) {
-        driver.get("https://todo.qacart.com/login");
+        driver.get(ConfigUtil.getInstance().getBaseUrl() + "/login");
     }
 
     public void login(WebDriver driver, User user) {

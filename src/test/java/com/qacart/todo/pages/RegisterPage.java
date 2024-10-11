@@ -1,6 +1,7 @@
 package com.qacart.todo.pages;
 
 import com.qacart.todo.models.User;
+import com.qacart.todo.utils.ConfigUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,7 +16,7 @@ public class RegisterPage {
     private final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("[data-testid=submit]");
 
     public void load(WebDriver driver) {
-        driver.get("https://todo.qacart.com/signup");
+        driver.get(ConfigUtil.getInstance().getBaseUrl() + "/signup");
     }
 
     public void register(WebDriver driver, User user) {
