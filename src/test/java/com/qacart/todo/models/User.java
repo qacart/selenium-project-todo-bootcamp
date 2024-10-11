@@ -7,8 +7,6 @@ public class User {
     private String password;
     private String confirmPassword;
 
-    public User() {}
-
     public User(String firstName, String lastName, String email, String password, String confirmPassword) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,48 +15,65 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getConfirmPassword() {
         return confirmPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public static UserBuilder builder() {
+        return new UserBuilder();
     }
+
+    public static class UserBuilder {
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String password;
+        private String confirmPassword;
+
+        public UserBuilder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public UserBuilder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public UserBuilder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UserBuilder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder setConfirmPassword(String confirmPassword) {
+            this.confirmPassword = confirmPassword;
+            return this;
+        }
+
+        public User build() {
+            return new User(firstName, lastName, email,password,confirmPassword);
+        }
+    }
+
 }

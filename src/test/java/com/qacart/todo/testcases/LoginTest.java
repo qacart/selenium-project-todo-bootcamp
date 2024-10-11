@@ -2,7 +2,6 @@ package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
 import com.qacart.todo.models.User;
-import com.qacart.todo.models.UserBuilder;
 import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.TodoPage;
 import org.openqa.selenium.WebElement;
@@ -19,7 +18,7 @@ public class LoginTest extends BaseTest {
 
         // Fill the email
 
-        User user = UserBuilder
+        User user = User
                 .builder()
                 .setEmail("automation@example.com")
                 .setPassword("Test1234")

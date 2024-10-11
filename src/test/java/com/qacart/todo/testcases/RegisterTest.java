@@ -2,7 +2,6 @@ package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
 import com.qacart.todo.models.User;
-import com.qacart.todo.models.UserBuilder;
 import com.qacart.todo.pages.RegisterPage;
 import com.qacart.todo.pages.TodoPage;
 import org.openqa.selenium.WebElement;
@@ -20,7 +19,7 @@ public class RegisterTest extends BaseTest {
         long currentTimeStamp = Instant.now().toEpochMilli();
         String email = "auto_test" + currentTimeStamp + "@example.com";
 
-        User user = UserBuilder
+        User user = User
                 .builder()
                 .setFirstName("Hatem")
                 .setLastName("Hatamleh")

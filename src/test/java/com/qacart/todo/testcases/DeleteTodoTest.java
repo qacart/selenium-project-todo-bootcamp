@@ -3,7 +3,6 @@ package com.qacart.todo.testcases;
 import com.qacart.todo.base.BaseTest;
 import com.qacart.todo.models.Todo;
 import com.qacart.todo.models.User;
-import com.qacart.todo.models.UserBuilder;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.RegisterPage;
 import com.qacart.todo.pages.TodoPage;
@@ -24,7 +23,7 @@ public class DeleteTodoTest extends BaseTest {
         long currentTimeStamp = Instant.now().toEpochMilli();
         String email = "auto_test" + currentTimeStamp + "@example.com";
 
-        User user = UserBuilder
+        User user = User
                 .builder()
                 .setFirstName("Hatem")
                 .setLastName("Hatamleh")
