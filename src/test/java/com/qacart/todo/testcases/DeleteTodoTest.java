@@ -18,8 +18,6 @@ public class DeleteTodoTest extends BaseTest {
 
     @BeforeMethod
     void register_and_add_todo() {
-        driver.get("https://todo.qacart.com/signup");
-
         long currentTimeStamp = Instant.now().toEpochMilli();
         String email = "auto_test" + currentTimeStamp + "@example.com";
 
@@ -33,6 +31,7 @@ public class DeleteTodoTest extends BaseTest {
                 .build();
 
         RegisterPage registerPage = new RegisterPage();
+        registerPage.load(driver);
         registerPage.register(driver, user);
 
         todoPage = new TodoPage();

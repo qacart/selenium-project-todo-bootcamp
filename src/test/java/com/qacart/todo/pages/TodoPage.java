@@ -1,5 +1,6 @@
 package com.qacart.todo.pages;
 
+import com.qacart.todo.utils.ConfigUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,8 +15,10 @@ public class TodoPage {
     private final By DELETE_ICON_LOCATOR = By.cssSelector("[data-testid=delete]");
     private final By NO_TODOS_MESSAGE_LOCATOR = By.cssSelector("[data-testid=no-todos]");
 
+    public void load(WebDriver driver) {
+        driver.get(ConfigUtil.getInstance().getBaseUrl() + "/todo");
+    }
 
-    // Methods
     public WebElement getWelcomeMessage(WebDriver driver) {
         return driver.findElement(WELCOME_MESSAGE_LOCATOR);
     }

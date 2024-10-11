@@ -6,6 +6,7 @@ import com.qacart.todo.models.User;
 import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.TodoPage;
+import com.qacart.todo.utils.ConfigUtil;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -17,15 +18,14 @@ public class AddTodoTest extends BaseTest {
 
     @BeforeMethod
     void login() {
-        driver.get("https://todo.qacart.com/login");
-
         User user = User
                 .builder()
-                .setEmail("automation@example.com")
-                .setPassword("Test1234")
+                .setEmail(ConfigUtil.getInstance().getEmail())
+                .setPassword(ConfigUtil.getInstance().getPassword())
                 .build();
 
         LoginPage loginPage = new LoginPage();
+        loginPage.load(driver);
         loginPage.login(driver, user);
     }
 
