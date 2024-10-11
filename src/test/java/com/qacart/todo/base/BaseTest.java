@@ -1,5 +1,6 @@
 package com.qacart.todo.base;
 
+import com.qacart.todo.factory.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,11 +15,7 @@ public class BaseTest {
 
     @BeforeMethod
     protected void setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver = new DriverFactory().initializeDriver();
     }
 
     @AfterMethod
