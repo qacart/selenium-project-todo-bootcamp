@@ -3,6 +3,7 @@ package com.qacart.todo.testcases;
 import com.qacart.todo.base.BaseTest;
 import com.qacart.todo.models.Todo;
 import com.qacart.todo.models.User;
+import com.qacart.todo.models.UserBuilder;
 import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.TodoPage;
@@ -20,9 +21,12 @@ public class AddTodoTest extends BaseTest {
         driver.get("https://todo.qacart.com/login");
         String email = "automation@example.com";
         String password = "Test1234";
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
+
+        User user = UserBuilder
+                .builder()
+                .setEmail("automation@example.com")
+                .setPassword("Test1234")
+                .build();
         LoginPage loginPage = new LoginPage();
         loginPage.login(driver, user);
     }
