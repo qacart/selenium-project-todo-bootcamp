@@ -1,6 +1,8 @@
 package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
+import com.qacart.todo.models.Todo;
+import com.qacart.todo.models.User;
 import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.TodoPage;
@@ -18,8 +20,9 @@ public class AddTodoTest extends BaseTest {
         driver.get("https://todo.qacart.com/login");
         String email = "automation@example.com";
         String password = "Test1234";
+        User user = new User(email, password);
         LoginPage loginPage = new LoginPage();
-        loginPage.login(driver, email, password);
+        loginPage.login(driver, user);
     }
 
     @Test
@@ -28,13 +31,14 @@ public class AddTodoTest extends BaseTest {
         TodoPage todoPage = new TodoPage();
         todoPage.clickOnPlusIcon(driver);
 
-        String task = "Learn Selenium " + Instant.now().toEpochMilli();
+        String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
+        Todo todo = new Todo(taskName);
         NewTodoPage newTodoPage = new NewTodoPage();
-        newTodoPage.createNewTodo(driver , task);
+        newTodoPage.createNewTodo(driver , todo);
 
         List<WebElement> todosText = todoPage.getTodosTexts(driver);
         String actualTodoText = todosText.getFirst().getText();
-        Assert.assertEquals(actualTodoText , task);
+        Assert.assertEquals(actualTodoText , taskName);
 
     }
 }

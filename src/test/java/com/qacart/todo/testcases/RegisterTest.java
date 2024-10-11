@@ -1,6 +1,7 @@
 package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
+import com.qacart.todo.models.User;
 import com.qacart.todo.pages.RegisterPage;
 import com.qacart.todo.pages.TodoPage;
 import org.openqa.selenium.WebElement;
@@ -22,8 +23,10 @@ public class RegisterTest extends BaseTest {
         String password = "Test1234";
         String confirmPassword = "Test1234";
 
+        User user = new User(firstName, lastName, email, password, confirmPassword);
+
         RegisterPage registerPage = new RegisterPage();
-        registerPage.register(driver, firstName, lastName, email, password, confirmPassword);
+        registerPage.register(driver, user);
 
         // Assert the welcome message is displayed
         TodoPage todoPage = new TodoPage();

@@ -1,5 +1,6 @@
 package com.qacart.todo.pages;
 
+import com.qacart.todo.models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,12 +16,12 @@ public class RegisterPage {
 
 
     // Methods
-    public void register(WebDriver driver, String firstName, String lastName, String email, String password, String confirmPassword) {
-        driver.findElement(FIRST_NAME_LOCATOR).sendKeys(firstName);
-        driver.findElement(LAST_NAME_LOCATOR).sendKeys(lastName);
-        driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(email);
-        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(password);
-        driver.findElement(CONFIRM_PASSWORD_LOCATOR).sendKeys(confirmPassword);
+    public void register(WebDriver driver, User user) {
+        driver.findElement(FIRST_NAME_LOCATOR).sendKeys(user.getFirstName());
+        driver.findElement(LAST_NAME_LOCATOR).sendKeys(user.getLastName());
+        driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(user.getEmail());
+        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(user.getPassword());
+        driver.findElement(CONFIRM_PASSWORD_LOCATOR).sendKeys(user.getConfirmPassword());
         driver.findElement(SUBMIT_BUTTON_LOCATOR).click();
     }
 

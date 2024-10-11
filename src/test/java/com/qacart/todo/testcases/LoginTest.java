@@ -1,6 +1,7 @@
 package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
+import com.qacart.todo.models.User;
 import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.TodoPage;
 import org.openqa.selenium.WebElement;
@@ -18,8 +19,11 @@ public class LoginTest extends BaseTest {
         // Fill the email
         String email = "automation@example.com";
         String password = "Test1234";
+
+        User user = new User(email, password);
+
         LoginPage loginPage = new LoginPage();
-        loginPage.login(driver, email, password);
+        loginPage.login(driver, user);
 
         // Assert the welcome message is displayed
         TodoPage todoPage = new TodoPage();
