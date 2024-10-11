@@ -14,9 +14,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     void should_be_able_to_login() {
-        driver.get("https://todo.qacart.com/login");
-
-        // Fill the email
 
         User user = User
                 .builder()
@@ -25,6 +22,7 @@ public class LoginTest extends BaseTest {
                 .build();
 
         LoginPage loginPage = new LoginPage();
+        loginPage.load(driver);
         loginPage.login(driver, user);
 
         // Assert the welcome message is displayed

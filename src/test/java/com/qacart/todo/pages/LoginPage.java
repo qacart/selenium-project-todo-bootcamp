@@ -11,6 +11,10 @@ public class LoginPage {
     private final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("[data-testid=submit]");
 
 
+    public void load(WebDriver driver) {
+        driver.get("https://todo.qacart.com/login");
+    }
+
     public void login(WebDriver driver, User user) {
         driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(user.getEmail());
         driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(user.getPassword());
