@@ -18,8 +18,6 @@ public class AddTodoTest extends BaseTest {
     @BeforeMethod
     void login() {
         driver.get("https://todo.qacart.com/login");
-        String email = "automation@example.com";
-        String password = "Test1234";
 
         User user = User
                 .builder()

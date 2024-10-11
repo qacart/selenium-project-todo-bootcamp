@@ -7,10 +7,6 @@ public class Todo {
 
     }
 
-    public Todo(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
