@@ -2,11 +2,10 @@ package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
 import com.qacart.todo.pages.RegisterPage;
-import org.openqa.selenium.By;
+import com.qacart.todo.pages.TodoPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.time.Instant;
 
 public class RegisterTest extends BaseTest {
 
@@ -18,7 +17,8 @@ public class RegisterTest extends BaseTest {
         registerPage.register(driver);
 
         // Assert the welcome message is displayed
-        WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=welcome]"));
+        TodoPage todoPage = new TodoPage();
+        WebElement welcomeMessage = todoPage.getWelcomeMessage(driver);
         Assert.assertTrue(welcomeMessage.isDisplayed());
 
     }

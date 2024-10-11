@@ -2,7 +2,6 @@ package com.qacart.todo.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.time.Instant;
 
@@ -14,7 +13,6 @@ public class RegisterPage {
     private final By PASSWORD_INPUT_LOCATOR = By.cssSelector("[data-testid=password]");
     private final By CONFIRM_PASSWORD_LOCATOR = By.cssSelector("[data-testid=confirm-password]");
     private final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("[data-testid=submit]");
-
 
 
     // Methods
