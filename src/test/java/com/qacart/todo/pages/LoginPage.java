@@ -1,8 +1,8 @@
 package com.qacart.todo.pages;
 
+import com.qacart.todo.models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage {
 
@@ -11,10 +11,9 @@ public class LoginPage {
     private final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("[data-testid=submit]");
 
 
-    public void login(WebDriver driver) {
-        String email = "automation@example.com";
-        driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(email);
-        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys("Test1234");
+    public void login(WebDriver driver, User user) {
+        driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(user.getEmail());
+        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(user.getPassword());
         driver.findElement(SUBMIT_BUTTON_LOCATOR).click();
     }
 

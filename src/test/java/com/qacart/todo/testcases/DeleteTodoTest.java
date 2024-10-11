@@ -1,6 +1,8 @@
 package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
+import com.qacart.todo.models.Todo;
+import com.qacart.todo.models.User;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.RegisterPage;
 import com.qacart.todo.pages.TodoPage;
@@ -18,16 +20,30 @@ public class DeleteTodoTest extends BaseTest {
     void register_and_add_todo() {
         driver.get("https://todo.qacart.com/signup");
 
+        long currentTimeStamp = Instant.now().toEpochMilli();
+        String email = "auto_test" + currentTimeStamp + "@example.com";
+
+        User user = User
+                .builder()
+                .setFirstName("Hatem")
+                .setLastName("Hatamleh")
+                .setEmail(email)
+                .setPassword("Test1234")
+                .setConfirmPassword("Test1234")
+                .build();
+
         RegisterPage registerPage = new RegisterPage();
-        registerPage.register(driver);
+        registerPage.register(driver, user);
 
         todoPage = new TodoPage();
         todoPage.clickOnPlusIcon(driver);
 
-        String task = "Learn Selenium " + Instant.now().toEpochMilli();
+        String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
 
         NewTodoPage newTodoPage = new NewTodoPage();
-        newTodoPage.createNewTodo(driver, task);
+        Todo todo = new Todo();
+        todo.setName(taskName);
+        newTodoPage.createNewTodo(driver, todo);
     }
 
     @Test
