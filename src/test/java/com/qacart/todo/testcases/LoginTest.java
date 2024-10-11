@@ -1,7 +1,8 @@
 package com.qacart.todo.testcases;
 
 import com.qacart.todo.base.BaseTest;
-import org.openqa.selenium.By;
+import com.qacart.todo.pages.LoginPage;
+import com.qacart.todo.pages.TodoPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,20 +16,12 @@ public class LoginTest extends BaseTest {
         driver.get("https://todo.qacart.com/login");
 
         // Fill the email
-        String email = "automation@example.com";
-        WebElement emailInput = driver.findElement(By.cssSelector("[data-testid=email]"));
-        emailInput.sendKeys(email);
-
-        // Fill the password
-        WebElement passwordInput = driver.findElement(By.cssSelector("[data-testid=password]"));
-        passwordInput.sendKeys("Test1234");
-
-        // Click on the signup button
-        WebElement submitButton = driver.findElement(By.cssSelector("[data-testid=submit]"));
-        submitButton.click();
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver);
 
         // Assert the welcome message is displayed
-        WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=welcome]"));
+        TodoPage todoPage = new TodoPage();
+        WebElement welcomeMessage = todoPage.getWelcomeMessage(driver);
         Assert.assertTrue(welcomeMessage.isDisplayed());
 
     }
