@@ -18,8 +18,8 @@ public class DeleteTodoTest extends BaseTest {
     void register_and_add_todo() {
         driver.get("https://todo.qacart.com/signup");
 
-        RegisterPage registerPage = new RegisterPage(driver);
-        registerPage.register();
+        RegisterPage registerPage = new RegisterPage();
+        registerPage.register(driver);
 
         WebElement plusIcon = driver.findElement(By.cssSelector("[data-testid=add]"));
         plusIcon.click();

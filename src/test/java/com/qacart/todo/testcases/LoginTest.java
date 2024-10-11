@@ -16,8 +16,8 @@ public class LoginTest extends BaseTest {
         driver.get("https://todo.qacart.com/login");
 
         // Fill the email
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login();
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver);
 
         // Assert the welcome message is displayed
         WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=welcome]"));

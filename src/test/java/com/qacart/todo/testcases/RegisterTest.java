@@ -14,8 +14,8 @@ public class RegisterTest extends BaseTest {
     void should_be_able_to_register() {
         driver.get("https://todo.qacart.com/signup");
 
-        RegisterPage registerPage = new RegisterPage(driver);
-        registerPage.register();
+        RegisterPage registerPage = new RegisterPage();
+        registerPage.register(driver);
 
         // Assert the welcome message is displayed
         WebElement welcomeMessage = driver.findElement(By.cssSelector("[data-testid=welcome]"));

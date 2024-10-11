@@ -15,8 +15,8 @@ public class AddTodoTest extends BaseTest {
     @BeforeMethod
     void login() {
         driver.get("https://todo.qacart.com/login");
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login();
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(driver);
     }
 
     @Test
