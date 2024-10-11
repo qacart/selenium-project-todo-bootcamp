@@ -11,10 +11,9 @@ public class LoginPage {
     private final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("[data-testid=submit]");
 
 
-    public void login(WebDriver driver) {
-        String email = "automation@example.com";
+    public void login(WebDriver driver, String email, String password) {
         driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(email);
-        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys("Test1234");
+        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(password);
         driver.findElement(SUBMIT_BUTTON_LOCATOR).click();
     }
 

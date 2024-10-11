@@ -16,15 +16,12 @@ public class RegisterPage {
 
 
     // Methods
-    public void register(WebDriver driver) {
-        driver.findElement(FIRST_NAME_LOCATOR).sendKeys("Hatem");
-        driver.findElement(LAST_NAME_LOCATOR).sendKeys("Hatamleh");
-        // Wer use time stamp to generate random Emails
-        long currentTimeStamp = Instant.now().toEpochMilli();
-        String email = "auto_test" + currentTimeStamp + "@example.com";
+    public void register(WebDriver driver, String firstName, String lastName, String email, String password, String confirmPassword) {
+        driver.findElement(FIRST_NAME_LOCATOR).sendKeys(firstName);
+        driver.findElement(LAST_NAME_LOCATOR).sendKeys(lastName);
         driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(email);
-        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys("Test1234");
-        driver.findElement(CONFIRM_PASSWORD_LOCATOR).sendKeys("Test1234");
+        driver.findElement(PASSWORD_INPUT_LOCATOR).sendKeys(password);
+        driver.findElement(CONFIRM_PASSWORD_LOCATOR).sendKeys(confirmPassword);
         driver.findElement(SUBMIT_BUTTON_LOCATOR).click();
     }
 

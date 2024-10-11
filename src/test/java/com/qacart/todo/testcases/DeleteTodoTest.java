@@ -18,8 +18,15 @@ public class DeleteTodoTest extends BaseTest {
     void register_and_add_todo() {
         driver.get("https://todo.qacart.com/signup");
 
+        String firstName = "Hatem";
+        String lastName = "Hatamleh";
+        long currentTimeStamp = Instant.now().toEpochMilli();
+        String email = "auto_test" + currentTimeStamp + "@example.com";
+        String password = "Test1234";
+        String confirmPassword = "Test1234";
+
         RegisterPage registerPage = new RegisterPage();
-        registerPage.register(driver);
+        registerPage.register(driver, firstName, lastName, email, password, confirmPassword);
 
         todoPage = new TodoPage();
         todoPage.clickOnPlusIcon(driver);

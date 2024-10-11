@@ -16,8 +16,10 @@ public class LoginTest extends BaseTest {
         driver.get("https://todo.qacart.com/login");
 
         // Fill the email
+        String email = "automation@example.com";
+        String password = "Test1234";
         LoginPage loginPage = new LoginPage();
-        loginPage.login(driver);
+        loginPage.login(driver, email, password);
 
         // Assert the welcome message is displayed
         TodoPage todoPage = new TodoPage();
