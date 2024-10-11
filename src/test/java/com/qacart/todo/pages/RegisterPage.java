@@ -3,7 +3,6 @@ package com.qacart.todo.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.time.Instant;
 
 public class RegisterPage {
     // Locators
