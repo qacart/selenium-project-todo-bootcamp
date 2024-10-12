@@ -31,24 +31,24 @@ public class DeleteTodoTest extends BaseTest {
                 .build();
 
         RegisterPage registerPage = new RegisterPage();
-        registerPage.load(driver);
-        registerPage.register(driver, user);
+        registerPage.load(getDriver());
+        registerPage.register(getDriver(), user);
 
         todoPage = new TodoPage();
-        todoPage.clickOnPlusIcon(driver);
+        todoPage.clickOnPlusIcon(getDriver());
 
         String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
 
         NewTodoPage newTodoPage = new NewTodoPage();
         Todo todo = new Todo();
         todo.setName(taskName);
-        newTodoPage.createNewTodo(driver, todo);
+        newTodoPage.createNewTodo(getDriver(), todo);
     }
 
     @Test
     void should_be_able_to_delete_todo() {
-        todoPage.deleteTodo(driver);
-        WebElement noTodosMessage = todoPage.getNoTodosMessage(driver);
+        todoPage.deleteTodo(getDriver());
+        WebElement noTodosMessage = todoPage.getNoTodosMessage(getDriver());
         Assert.assertTrue(noTodosMessage.isDisplayed());
     }
 }
