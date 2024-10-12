@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import java.time.Duration;
 
 public class DriverFactory {
     String browserName = System.getProperty("browserName", "Chrome");
@@ -27,7 +26,6 @@ public class DriverFactory {
             default -> throw new IllegalArgumentException("Browser is not supported");
         }
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         return driver;
     }
 }
