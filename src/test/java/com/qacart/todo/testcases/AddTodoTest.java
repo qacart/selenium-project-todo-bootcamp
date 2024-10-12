@@ -25,23 +25,23 @@ public class AddTodoTest extends BaseTest {
                 .build();
 
         LoginPage loginPage = new LoginPage();
-        loginPage.load(driver);
-        loginPage.login(driver, user);
+        loginPage.load(getDriver());
+        loginPage.login(getDriver(), user);
     }
 
     @Test
     void should_be_able_to_add_todo() {
 
         TodoPage todoPage = new TodoPage();
-        todoPage.clickOnPlusIcon(driver);
+        todoPage.clickOnPlusIcon(getDriver());
 
         String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
         Todo todo = new Todo();
         todo.setName(taskName);
         NewTodoPage newTodoPage = new NewTodoPage();
-        newTodoPage.createNewTodo(driver , todo);
+        newTodoPage.createNewTodo(getDriver() , todo);
 
-        List<WebElement> todosText = todoPage.getTodosTexts(driver);
+        List<WebElement> todosText = todoPage.getTodosTexts(getDriver());
         String actualTodoText = todosText.getFirst().getText();
         Assert.assertEquals(actualTodoText , taskName);
 
