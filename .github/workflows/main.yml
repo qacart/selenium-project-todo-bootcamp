@@ -1,8 +1,9 @@
 name: Run Selenium Tests
 
 on:
-  push:
-    branches: ["main"]
+  create:
+    branches:
+      - automation-*
 
 jobs:
   test:
