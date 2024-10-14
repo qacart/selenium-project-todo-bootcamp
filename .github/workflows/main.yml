@@ -1,34 +1,34 @@
-name: Selenium E2E test
+name: Run Selenium Tests
 
-on: [ push ]
+on:
+  push:
+    branches: ["main"]
+  create:
+    branches:
+      - automation-*
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
-          java-version: '21'
+          java-version: "21"
+          cache: "maven"
           distribution: 'temurin'
+      - uses: browser-actions/setup-chrome@v1
+      - run: mvn clean test
 
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@latest
-
-      - name: Run Test
-        run: mvn clean test
-
-      - name: Get Allure history
-        uses: actions/checkout@v2
-        continue-on-error: true
+      - uses: actions/upload-artifact@v3
+        if: always()
         with:
-          ref: gh-pages
-          path: gh-pages
+          name: allure-results-${{ matrix.marks }}
+          path: allure-results-${{ matrix.marks }}
 
-      - name: Allure Report action from marketplace
+      - name: configure allure using allure report action
         uses: simple-elf/allure-report-action@master
+        if: always()
         id: allure-report
         with:
           allure_results: allure-results
@@ -37,8 +37,12 @@ jobs:
           allure_history: allure-history
 
       - name: Deploy report to Github Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+
+
+
