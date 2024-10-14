@@ -38,7 +38,6 @@ public class AuthTest extends BaseTest {
         TodoPage todoPage = new TodoPage();
         WebElement welcomeMessage = todoPage.getWelcomeMessage(driver.get());
         Assert.assertTrue(welcomeMessage.isDisplayed());
-
     }
 
     @Story("Register Functionality")
