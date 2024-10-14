@@ -30,13 +30,13 @@ public class AuthTest extends BaseTest {
                 .setPassword(ConfigUtil.getInstance().getPassword())
                 .build();
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.load(driver.get());
-        loginPage.login(driver.get(), user);
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.load();
+        loginPage.login(user);
 
         // Assert the welcome message is displayed
-        TodoPage todoPage = new TodoPage();
-        WebElement welcomeMessage = todoPage.getWelcomeMessage(driver.get());
+        TodoPage todoPage = new TodoPage(getDriver());
+        WebElement welcomeMessage = todoPage.getWelcomeMessage();
         Assert.assertTrue(welcomeMessage.isDisplayed());
     }
 
@@ -57,13 +57,13 @@ public class AuthTest extends BaseTest {
                 .setConfirmPassword("Test1234")
                 .build();
 
-        RegisterPage registerPage = new RegisterPage();
-        registerPage.load(getDriver());
-        registerPage.register(getDriver(), user);
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        registerPage.load();
+        registerPage.register(user);
 
         // Assert the welcome message is displayed
-        TodoPage todoPage = new TodoPage();
-        WebElement welcomeMessage = todoPage.getWelcomeMessage(getDriver());
+        TodoPage todoPage = new TodoPage(getDriver());
+        WebElement welcomeMessage = todoPage.getWelcomeMessage();
         Assert.assertTrue(welcomeMessage.isDisplayed());
 
     }

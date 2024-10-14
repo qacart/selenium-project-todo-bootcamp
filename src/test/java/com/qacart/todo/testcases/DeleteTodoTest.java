@@ -34,27 +34,27 @@ public class DeleteTodoTest extends BaseTest {
                 .setConfirmPassword("Test1234")
                 .build();
 
-        RegisterPage registerPage = new RegisterPage();
-        registerPage.load(getDriver());
-        registerPage.register(getDriver(), user);
+        RegisterPage registerPage = new RegisterPage(getDriver());
+        registerPage.load();
+        registerPage.register(user);
 
-        todoPage = new TodoPage();
-        todoPage.clickOnPlusIcon(getDriver());
+        todoPage = new TodoPage(getDriver());
+        todoPage.clickOnPlusIcon();
 
         String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
 
-        NewTodoPage newTodoPage = new NewTodoPage();
+        NewTodoPage newTodoPage = new NewTodoPage(getDriver());
         Todo todo = new Todo();
         todo.setName(taskName);
-        newTodoPage.createNewTodo(getDriver(), todo);
+        newTodoPage.createNewTodo(todo);
     }
 
     @Story("Delete Todo Functionality")
     @Description("To make sure tha users can delete a todo any time")
     @Test(description = "Should be able to delete a Todo")
     void should_be_able_to_delete_todo() {
-        todoPage.deleteTodo(getDriver());
-        WebElement noTodosMessage = todoPage.getNoTodosMessage(getDriver());
+        todoPage.deleteTodo();
+        WebElement noTodosMessage = todoPage.getNoTodosMessage();
         Assert.assertTrue(noTodosMessage.isDisplayed());
     }
 }

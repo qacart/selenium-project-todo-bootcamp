@@ -1,15 +1,16 @@
 package com.qacart.todo.pages;
 
+import com.qacart.todo.base.BasePage;
 import com.qacart.todo.utils.ConfigUtil;
-import com.qacart.todo.utils.WaitUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class TodoPage {
+public class TodoPage extends BasePage {
     // Locators
     private final By WELCOME_MESSAGE_LOCATOR = By.cssSelector("[data-testid=welcome]");
     private final By PLUS_ICON_LOCATOR = By.cssSelector("[data-testid=add]");
@@ -17,34 +18,39 @@ public class TodoPage {
     private final By DELETE_ICON_LOCATOR = By.cssSelector("[data-testid=delete]");
     private final By NO_TODOS_MESSAGE_LOCATOR = By.cssSelector("[data-testid=no-todos]");
 
+    public TodoPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Step
-    public void load(WebDriver driver) {
+    @Override
+    public void load() {
         driver.get(ConfigUtil.getInstance().getBaseUrl() + "/todo");
     }
 
     @Step
-    public WebElement getWelcomeMessage(WebDriver driver) {
-        return WaitUtils.waitForElementToBeVisible(driver, WELCOME_MESSAGE_LOCATOR );
+    public WebElement getWelcomeMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(WELCOME_MESSAGE_LOCATOR));
     }
 
     @Step
-    public void clickOnPlusIcon(WebDriver driver) {
-        WaitUtils.waitForElementToBeVisible(driver, PLUS_ICON_LOCATOR).click();
+    public void clickOnPlusIcon() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(PLUS_ICON_LOCATOR)).click();
     }
 
     @Step
-    public List<WebElement> getTodosTexts (WebDriver driver) {
-        return WaitUtils.waitForElementsToBeVisible(driver, TODOS_TEXT_LOCATOR);
+    public List<WebElement> getTodosTexts () {
+            return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(TODOS_TEXT_LOCATOR));
     }
 
     @Step
-    public void deleteTodo(WebDriver driver) {
-        WaitUtils.waitForElementToBeVisible(driver, DELETE_ICON_LOCATOR).click();
+    public void deleteTodo() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(DELETE_ICON_LOCATOR)).click();
     }
 
     @Step
-    public WebElement getNoTodosMessage(WebDriver driver) {
-        return WaitUtils.waitForElementToBeVisible(driver, NO_TODOS_MESSAGE_LOCATOR);
+    public WebElement getNoTodosMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(NO_TODOS_MESSAGE_LOCATOR));
     }
 
 }

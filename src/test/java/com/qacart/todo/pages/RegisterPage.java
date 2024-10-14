@@ -1,5 +1,6 @@
 package com.qacart.todo.pages;
 
+import com.qacart.todo.base.BasePage;
 import com.qacart.todo.models.User;
 import com.qacart.todo.utils.ConfigUtil;
 import io.qameta.allure.Step;
@@ -7,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
-public class RegisterPage {
+public class RegisterPage extends BasePage {
 
     private final By FIRST_NAME_LOCATOR = By.cssSelector("[data-testid=first-name]");
     private final By LAST_NAME_LOCATOR = By.cssSelector("[data-testid=last-name]");
@@ -16,13 +17,18 @@ public class RegisterPage {
     private final By CONFIRM_PASSWORD_LOCATOR = By.cssSelector("[data-testid=confirm-password]");
     private final By SUBMIT_BUTTON_LOCATOR = By.cssSelector("[data-testid=submit]");
 
+    public RegisterPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Step
-    public void load(WebDriver driver) {
+    @Override
+    public void load() {
         driver.get(ConfigUtil.getInstance().getBaseUrl() + "/signup");
     }
 
     @Step
-    public void register(WebDriver driver, User user) {
+    public void register(User user) {
         driver.findElement(FIRST_NAME_LOCATOR).sendKeys(user.getFirstName());
         driver.findElement(LAST_NAME_LOCATOR).sendKeys(user.getLastName());
         driver.findElement(EMAIL_INPUT_LOCATOR).sendKeys(user.getEmail());

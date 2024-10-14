@@ -28,9 +28,9 @@ public class AddTodoTest extends BaseTest {
                 .setPassword(ConfigUtil.getInstance().getPassword())
                 .build();
 
-        LoginPage loginPage = new LoginPage();
-        loginPage.load(getDriver());
-        loginPage.login(getDriver(), user);
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.load();
+        loginPage.login(user);
     }
 
     @Story("Add Todo Functionality")
@@ -38,16 +38,16 @@ public class AddTodoTest extends BaseTest {
     @Test(description = "Should be able to add a todo to the application")
     void should_be_able_to_add_todo() {
 
-        TodoPage todoPage = new TodoPage();
-        todoPage.clickOnPlusIcon(getDriver());
+        TodoPage todoPage = new TodoPage(getDriver());
+        todoPage.clickOnPlusIcon();
 
         String taskName = "Learn Selenium " + Instant.now().toEpochMilli();
         Todo todo = new Todo();
         todo.setName(taskName);
-        NewTodoPage newTodoPage = new NewTodoPage();
-        newTodoPage.createNewTodo(getDriver() , todo);
+        NewTodoPage newTodoPage = new NewTodoPage(getDriver());
+        newTodoPage.createNewTodo(todo);
 
-        List<WebElement> todosText = todoPage.getTodosTexts(getDriver());
+        List<WebElement> todosText = todoPage.getTodosTexts();
         String actualTodoText = todosText.getFirst().getText();
         Assert.assertEquals(actualTodoText , taskName);
 
