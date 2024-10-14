@@ -18,6 +18,7 @@ public class WaitUtils {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    // This method is used to wait for multiple elements to be visible
     public static List<WebElement> waitForElementsToBeVisible(WebDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
