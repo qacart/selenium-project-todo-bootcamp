@@ -7,6 +7,9 @@ import com.qacart.todo.pages.LoginPage;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.TodoPage;
 import com.qacart.todo.utils.ConfigUtil;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -14,6 +17,7 @@ import org.testng.annotations.Test;
 import java.time.Instant;
 import java.util.List;
 
+@Feature("Todo Features")
 public class AddTodoTest extends BaseTest {
 
     @BeforeMethod
@@ -29,7 +33,9 @@ public class AddTodoTest extends BaseTest {
         loginPage.login(getDriver(), user);
     }
 
-    @Test
+    @Story("Add Todo Functionality")
+    @Description("To make sure tha users can create a new todo")
+    @Test(description = "Should be able to add a todo to the application")
     void should_be_able_to_add_todo() {
 
         TodoPage todoPage = new TodoPage();

@@ -6,12 +6,16 @@ import com.qacart.todo.models.User;
 import com.qacart.todo.pages.NewTodoPage;
 import com.qacart.todo.pages.RegisterPage;
 import com.qacart.todo.pages.TodoPage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.time.Instant;
 
+@Feature("Todo Features")
 public class DeleteTodoTest extends BaseTest {
 
     TodoPage todoPage;
@@ -45,7 +49,9 @@ public class DeleteTodoTest extends BaseTest {
         newTodoPage.createNewTodo(getDriver(), todo);
     }
 
-    @Test
+    @Story("Delete Todo Functionality")
+    @Description("To make sure tha users can delete a todo any time")
+    @Test(description = "Should be able to delete a Todo")
     void should_be_able_to_delete_todo() {
         todoPage.deleteTodo(getDriver());
         WebElement noTodosMessage = todoPage.getNoTodosMessage(getDriver());
